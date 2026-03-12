@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Ahmad Mohammed — Developer</title>
+  <link rel="shortcut icon" href="assets/product-development.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ========== LOADER ========== -->
+<div id="loader">
+  <canvas id="webCanvas"></canvas>
+  <div class="loader-center">
+    <!-- Classic Raimi Spider-Man spider logo -->
+    <div class="spider-logo" id="spiderLogo">
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#e23636">
+          <!-- Head -->
+          <circle cx="256" cy="128" r="15"/>
+          <!-- Thorax -->
+          <ellipse cx="256" cy="195" rx="26" ry="52"/>
+          <!-- Abdomen -->
+          <ellipse cx="256" cy="310" rx="18" ry="58"/>
+          <!-- Spinnerets -->
+          <ellipse cx="256" cy="376" rx="6" ry="10"/>
+
+          <!-- === RIGHT LEGS === -->
+          <!-- Top right: sweeping dramatically up and out -->
+          <path d="M272 168 C310 105 370 42 440 6 C445 4 447 8 443 12 C376 50 315 112 268 178Z"/>
+          <!-- Upper-mid right: extending mostly horizontal -->
+          <path d="M278 198 C330 176 400 158 480 150 C485 149 485 155 480 156 C400 164 332 182 274 206Z"/>
+          <!-- Lower-mid right: angling down and out -->
+          <path d="M274 232 C322 260 395 308 460 370 C464 374 460 378 456 374 C392 314 320 266 270 240Z"/>
+          <!-- Bottom right: sweeping down -->
+          <path d="M264 300 C280 355 316 425 355 486 C357 490 352 493 350 489 C312 430 276 360 258 306Z"/>
+
+          <!-- === LEFT LEGS (mirrored) === -->
+          <!-- Top left -->
+          <path d="M240 168 C202 105 142 42 72 6 C67 4 65 8 69 12 C136 50 197 112 244 178Z"/>
+          <!-- Upper-mid left -->
+          <path d="M234 198 C182 176 112 158 32 150 C27 149 27 155 32 156 C112 164 180 182 238 206Z"/>
+          <!-- Lower-mid left -->
+          <path d="M238 232 C190 260 117 308 52 370 C48 374 52 378 56 374 C120 314 192 266 242 240Z"/>
+          <!-- Bottom left -->
+          <path d="M248 300 C232 355 196 425 157 486 C155 490 160 493 162 489 C200 430 236 360 254 306Z"/>
+        </g>
+      </svg>
+    </div>
+    <!-- Percentage -->
+    <div class="loader-pct" id="loaderPct">0<span>%</span></div>
+    <!-- Bar -->
+    <div class="loader-bar">
+      <div class="loader-bar-fill" id="loaderBarFill"></div>
+    </div>
+    <div class="loader-text">LOADING</div>
+  </div>
+</div>
+
+<!-- ========== PROGRESS ========== -->
+<div id="progress">
+  <div class="progress-glow"></div>
+</div>
+
+<!-- ========== NAV ========== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">A<span>.</span></a>
+    <div class="nav-pill" id="navPill">
+      <div class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#friends" class="nav-link">Friends</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-sheen"></div>
+      <div class="nav-active-glow" id="navActiveGlow"></div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== MOBILE NAV ========== -->
+<div id="mobileNav">
+  <a href="#about" class="mnav-link">About</a>
+  <a href="#skills" class="mnav-link">Skills</a>
+  <a href="#work" class="mnav-link">Work</a>
+  <a href="#friends" class="mnav-link">Friends</a>
+  <a href="#contact" class="mnav-link">Contact</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="wrap hero-wrap">
+    <div class="hero-top">
+      <div class="hero-tag">
+        <span class="dot-live"></span>
+        <span>Available for work</span>
+      </div>
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-line"><span class="hero-word">Ahmad</span></span>
+      <span class="hero-line"><span class="hero-word">Mohammed<span class="accent">.</span></span></span>
+    </h1>
+    <p class="hero-role">Full-Stack Developer</p>
+    <div class="hero-bottom">
+      <p class="hero-desc">From <strong>Erbil, Kurdistan</strong> — crafting digital experiences powered by code &amp; AI.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary"><span class="btn-text">View Projects</span><span class="btn-glow"></span></a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="section-label"><span class="label-num">01</span><span class="label-line"></span><span>About</span></div>
+    <div class="about-grid">
+      <div class="about-img-col">
+        <div class="about-img-wrap">
+          <img src="assets/Na Hwa-jjn icon _].jpg" alt="Ahmad Mohammed">
+          <div class="img-border"></div>
+          <div class="img-glow"></div>
+          <div class="img-corner img-corner-tl"></div>
+          <div class="img-corner img-corner-br"></div>
+        </div>
+      </div>
+      <div class="about-text-col">
+        <h2 class="about-heading">I build things for the web<span class="accent">.</span></h2>
+        <p>Hello! I'm Ahmad, a 21-year-old developer based in Erbil. Coding is my creative outlet and endless source of curiosity.</p>
+        <p>What sets me apart — I combine development skills with AI to deliver innovative, boundary-pushing projects.</p>
+        <p>Currently studying at Shaqlawa Technical Institute, IT Department, constantly expanding my knowledge.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-top">
+              <span class="stat-number" data-target="2">0</span>
+              <span class="stat-plus">+</span>
+            </div>
+            <span class="stat-text">Years<br>Coding</span>
+            <div class="stat-bar"><div class="stat-bar-fill" data-width="40%"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-top">
+              <span class="stat-number" data-target="15">0</span>
+              <span class="stat-plus">+</span>
+            </div>
+            <span class="stat-text">Tech<br>Stack</span>
+            <div class="stat-bar"><div class="stat-bar-fill" data-width="85%"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-top">
+              <span class="stat-number" data-target="3">0</span>
+              <span class="stat-plus">+</span>
+            </div>
+            <span class="stat-text">Live<br>Projects</span>
+            <div class="stat-bar"><div class="stat-bar-fill" data-width="55%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills" class="section section-dark">
+  <div class="wrap">
+    <div class="section-label"><span class="label-num">02</span><span class="label-line"></span><span>Skills</span></div>
+    <h2 class="section-heading">Technologies I work with<span class="accent">.</span></h2>
+
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skills-category">
+        <h3 class="cat-label"><span class="cat-dot"></span>Languages & Frontend</h3>
+        <div class="cat-cards">
+          <div class="skill-card" data-color="#f89820"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"></div><span>Java</span></div>
+          <div class="skill-card" data-color="#f7df1e"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div><span>JavaScript</span></div>
+          <div class="skill-card" data-color="#e34f26"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></div><span>HTML5</span></div>
+          <div class="skill-card" data-color="#264de4"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></div><span>CSS3</span></div>
+          <div class="skill-card" data-color="#06b6d4"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"></div><span>Tailwind</span></div>
+          <div class="skill-card" data-color="#7952b3"><div class="sk-icon-pad"><img src="https://img.icons8.com/?size=100&id=PndQWK6M1Hjo&format=png&color=000000" alt="Bootstrap"></div><span>Bootstrap</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="cat-label"><span class="cat-dot"></span>Backend & Databases</h3>
+        <div class="cat-cards">
+          <div class="skill-card" data-color="#777bb4"><div class="sk-icon-pad"><img src="https://img.icons8.com/?size=100&id=121463&format=png&color=000000" alt="PHP"></div><span>PHP</span></div>
+          <div class="skill-card" data-color="#ff2d20"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel"></div><span>Laravel</span></div>
+          <div class="skill-card" data-color="#009688"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-plain.svg" alt="FastAPI"></div><span>FastAPI</span></div>
+          <div class="skill-card" data-color="#68217a"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-line.svg" alt="C#"></div><span>C#</span></div>
+          <div class="skill-card" data-color="#3776ab"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div><span>Python</span></div>
+          <div class="skill-card" data-color="#4479a1"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div><span>MySQL</span></div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="cat-label"><span class="cat-dot"></span>Tools & Design</h3>
+        <div class="cat-cards">
+          <div class="skill-card" data-color="#2496ed"><div class="sk-icon-pad"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div><span>Docker</span></div>
+          <div class="skill-card" data-color="#ff6c37"><div class="sk-icon-pad"><img src="https://img.icons8.com/?size=100&id=EPbEfEa7o8CB&format=png&color=000000" alt="Postman"></div><span>Postman</span></div>
+          <div class="skill-card" data-color="#31a8ff"><div class="sk-icon-pad"><img src="https://img.icons8.com/?size=100&id=13677&format=png&color=000000" alt="Photoshop"></div><span>Photoshop</span></div>
+          <div class="skill-card" data-color="#ff9a00"><div class="sk-icon-pad"><img src="https://img.icons8.com/?size=100&id=13631&format=png&color=000000" alt="Illustrator"></div><span>Illustrator</span></div>
+          <div class="skill-card" data-color="#005f9e"><div class="sk-icon-pad"><img src="assets/0f466769d594b1f311ab317cb86e24e52b7edae4.png" alt="SketchUp"></div><span>SketchUp</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-counter">
+      <div class="counter-number" id="skillCount">0</div>
+      <div class="counter-text">Technologies<br>& Tools</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WORK ========== -->
+<section id="work" class="section">
+  <div class="wrap">
+    <div class="section-label"><span class="label-num">03</span><span class="label-line"></span><span>Work</span></div>
+    <h2 class="section-heading">Selected Projects<span class="accent">.</span></h2>
+
+    <div class="project" data-anim>
+      <div class="project-img">
+        <img src="assets/Screenshot 2026-01-30 190607.png" alt="Campus Board">
+        <a href="https://campusboard.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-overlay">
+          <span>View Live &nearr;</span>
+        </a>
+      </div>
+      <div class="project-info">
+        <span class="project-num">01</span>
+        <h3>Campus News & Board System</h3>
+        <p>A comprehensive news &amp; announcement board for campus management with real-time updates and modern UI.</p>
+        <div class="project-tags"><span>HTML</span><span>Tailwind</span><span>JavaScript</span><span>SQL</span></div>
+      </div>
+    </div>
+
+    <div class="project project-reverse" data-anim>
+      <div class="project-img">
+        <img src="images/image.png" alt="Laravel Reference">
+        <a href="https://laravelreference.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-overlay">
+          <span>View Live &nearr;</span>
+        </a>
+      </div>
+      <div class="project-info">
+        <span class="project-num">02</span>
+        <h3>Laravel Cheatsheet</h3>
+        <p>An intelligent cheatsheet for Laravel beginners, making the framework accessible and easy to learn.</p>
+        <div class="project-tags"><span>Laravel</span><span>PHP</span></div>
+      </div>
+    </div>
+
+    <div class="project" data-anim>
+      <div class="project-img">
+        <img src="assets/image.png" alt="Docker Reference">
+        <a href="https://dockerreference.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-overlay">
+          <span>View Live &nearr;</span>
+        </a>
+      </div>
+      <div class="project-info">
+        <span class="project-num">03</span>
+        <h3>Docker Cheatsheet</h3>
+        <p>A comprehensive cheatsheet for Docker beginners with visual explanations and command references.</p>
+        <div class="project-tags"><span>Docker</span><span>DevOps</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FRIENDS ========== -->
+<section id="friends" class="section section-dark">
+  <div class="wrap">
+    <div class="section-label"><span class="label-num">04</span><span class="label-line"></span><span>Friends</span></div>
+    <h2 class="section-heading">Creative Crew<span class="accent">.</span></h2>
+    <p class="friends-sub">People I build, learn & grow with.</p>
+
+    <div class="friends-grid" id="friendsGrid">
+      <a href="https://amirtofeq.gt.tc/" target="_blank" rel="noopener noreferrer" class="friend-card">
+        <span class="fc-num">01</span>
+        <div class="fc-avatar">
+          <img src="assets/photo_2025-04-29_07-47-33.jpg" alt="Amir">
+          <span class="fc-status"></span>
+        </div>
+        <div class="fc-body">
+          <h4>Amir</h4>
+          <span class="fc-role">Full-Stack Developer</span>
+        </div>
+        <svg class="fc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+
+      <a href="https://ranjasterius.netlify.app" target="_blank" rel="noopener noreferrer" class="friend-card">
+        <span class="fc-num">02</span>
+        <div class="fc-avatar">
+          <img src="assets/photo_2025-06-03_11-21-15.jpg" alt="Ranj">
+          <span class="fc-status"></span>
+        </div>
+        <div class="fc-body">
+          <h4>Ranj</h4>
+          <span class="fc-role">Front-End Developer</span>
+        </div>
+        <svg class="fc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+
+      <a href="https://ahmad-ahmad.netlify.app/" target="_blank" rel="noopener noreferrer" class="friend-card">
+        <span class="fc-num">03</span>
+        <div class="fc-avatar">
+          <img src="assets/photo_2026-01-03_19-12-55.jpg" alt="Ahmad">
+          <span class="fc-status"></span>
+        </div>
+        <div class="fc-body">
+          <h4>Ahmad</h4>
+          <span class="fc-role">Web Designer</span>
+        </div>
+        <svg class="fc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+
+      <a href="https://ahmad-ahmad.netlify.app/" target="_blank" rel="noopener noreferrer" class="friend-card">
+        <span class="fc-num">04</span>
+        <div class="fc-avatar">
+          <img src="assets/✧.jpg" alt="Dyar">
+          <span class="fc-status"></span>
+        </div>
+        <div class="fc-body">
+          <h4>Dyar</h4>
+          <span class="fc-role">Interior Designer</span>
+        </div>
+        <svg class="fc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+
+      <a href="https://mwxzdev.gt.tc/?i=1" target="_blank" rel="noopener noreferrer" class="friend-card">
+        <span class="fc-num">05</span>
+        <div class="fc-avatar">
+          <img src="assets/صور الإله إلا الله.jpg" alt="Mwxz">
+          <span class="fc-status"></span>
+        </div>
+        <div class="fc-body">
+          <h4>Mwxz</h4>
+          <span class="fc-role">Front-End Developer</span>
+        </div>
+        <svg class="fc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="section">
+  <div class="wrap contact-wrap">
+    <div class="section-label"><span class="label-num">05</span><span class="label-line"></span><span>Contact</span></div>
+    <h2 class="contact-heading">Let's work<br>together<span class="accent">.</span></h2>
+    <p class="contact-sub">Got a project in mind? Let's talk.</p>
+    <div class="contact-status">
+      <span class="status-dot"></span>
+      <span>Available for freelance work</span>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/emberrenewed" target="_blank" rel="noopener noreferrer" class="contact-card" data-color="#f0f6fc">
+        <div class="cc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="contact-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <div class="cc-icon-ring"></div>
+        </div>
+        <div class="cc-body">
+          <strong>GitHub</strong>
+          <span>@emberrenewed</span>
+        </div>
+        <div class="cc-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+        <div class="cc-sheen"></div>
+      </a>
+      <a href="https://www.facebook.com/ahmad.muhammet.742481/" target="_blank" rel="noopener noreferrer" class="contact-card" data-color="#1877f2">
+        <div class="cc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="contact-icon"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <div class="cc-icon-ring"></div>
+        </div>
+        <div class="cc-body">
+          <strong>Facebook</strong>
+          <span>Ahmad Mohammed</span>
+        </div>
+        <div class="cc-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+        <div class="cc-sheen"></div>
+      </a>
+      <a href="https://t.me/emberdev" target="_blank" rel="noopener noreferrer" class="contact-card" data-color="#26a5e4">
+        <div class="cc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="contact-icon"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          <div class="cc-icon-ring"></div>
+        </div>
+        <div class="cc-body">
+          <strong>Telegram</strong>
+          <span>@emberdev</span>
+        </div>
+        <div class="cc-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+        <div class="cc-sheen"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer id="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-left">
+      <span class="footer-logo">A<span class="accent">.</span></span>
+      <span class="footer-credit">Designed &amp; built by Ahmad Mohammed</span>
+    </div>
+    <div class="footer-right">
+      <span>&copy; 2026</span>
+      <span class="footer-dot"></span>
+      <span>All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

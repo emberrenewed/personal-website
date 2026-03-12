@@ -1,0 +1,46 @@
+<!-- Projects Section -->
+   <section id="projects" class="py-24 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="section-title font-display text-4xl font-bold mb-4 pl-8 fade-up">My Projects</h2>
+     <p class="text-lg mb-4 pl-8 fade-up" style="color: var(--text-secondary);">Creative solutions powered by AI collaboration</p>
+     <p class="text-sm mb-12 pl-8 fade-up italic" style="color: var(--text-secondary);">Note: I complete my projects with AI because I have only been studying code for two years</p>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Project 1 -->
+      <div class="glass-card project-card overflow-hidden fade-up">
+       <div class="project-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor" style="color: var(--accent-color);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+        </svg><span class="text-sm" style="color: var(--text-secondary);">Add image/video</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-bold mb-2">Campus News &amp; Board System</h3>
+        <p class="text-sm mb-4" style="color: var(--text-secondary);">A comprehensive news and announcement board system for campus management.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">HTML</span> <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">Tailwind</span> <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">JavaScript</span> <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">SQL</span>
+        </div>
+       </div>
+      </div><!-- Project 2 -->
+      <div class="glass-card project-card overflow-hidden fade-up">
+       <div class="project-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor" style="color: var(--accent-color);"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+        </svg><span class="text-sm" style="color: var(--text-secondary);">Add image/video</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-bold mb-2">AI Chatbot Website</h3>
+        <p class="text-sm mb-4" style="color: var(--text-secondary);">An intelligent chatbot interface powered by JavaScript and API integration.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">JavaScript</span> <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">API</span>
+        </div>
+       </div>
+      </div><!-- Project 3 -->
+      <div class="glass-card project-card overflow-hidden fade-up">
+       <div class="project-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor" style="color: var(--accent-color);"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+        </svg><span class="text-sm" style="color: var(--text-secondary);">Add image/video</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-bold mb-2">Engineers Repository</h3>
+        <p class="text-sm mb-4" style="color: var(--text-secondary);">A comprehensive repository platform designed for engineering resources.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(0,245,212,0.2); color: var(--accent-color);">Full Stack</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>

@@ -1,0 +1,65 @@
+<!-- Courses Section -->
+   <section id="courses" class="py-24 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="section-title font-display text-4xl font-bold mb-4 pl-8 fade-up">My Courses</h2>
+     <p class="text-lg mb-12 pl-8 fade-up" style="color: var(--text-secondary);">Continuous learning journey</p>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Course 1 -->
+      <div class="glass-card course-card fade-up" onclick="showCourseDetails(this)" data-course="HTML &amp; CSS Learning Course" data-description="Comprehensive course covering HTML5 and CSS3 fundamentals, responsive design, and modern web development practices." data-status="Complete">
+       <div class="course-image" style="background: linear-gradient(135deg, #e34c26, #264de4);"><span>🌐</span> <span class="course-status status-complete">Complete</span>
+       </div>
+       <div class="p-5">
+        <h3 class="font-display font-semibold mb-2">HTML &amp; CSS Learning Course</h3>
+        <p class="text-sm" style="color: var(--text-secondary);">Complete web foundations</p>
+       </div>
+      </div><!-- Course 2 -->
+      <div class="glass-card course-card fade-up" onclick="showCourseDetails(this)" data-course="C# Learning Course" data-description="Basic C# programming concepts including object-oriented programming (OOP), classes, inheritance, polymorphism, and .NET framework fundamentals." data-status="Basic + OOP">
+       <div class="course-image" style="background: linear-gradient(135deg, #68217a, #9b4f96);"><span>💜</span> <span class="course-status status-progress">Basic + OOP</span>
+       </div>
+       <div class="p-5">
+        <h3 class="font-display font-semibold mb-2">C# Learning Course</h3>
+        <p class="text-sm" style="color: var(--text-secondary);">Object-oriented programming</p>
+       </div>
+      </div><!-- Course 3 -->
+      <div class="glass-card course-card fade-up" onclick="showCourseDetails(this)" data-course="Java Learning Course" data-description="Introduction to Java programming, covering basic syntax, data types, control structures, and foundational programming concepts." data-status="Beginner">
+       <div class="course-image" style="background: linear-gradient(135deg, #f89820, #5382a1);"><span>☕</span> <span class="course-status status-progress">Beginner</span>
+       </div>
+       <div class="p-5">
+        <h3 class="font-display font-semibold mb-2">Java Learning Course</h3>
+        <p class="text-sm" style="color: var(--text-secondary);">Programming fundamentals</p>
+       </div>
+      </div><!-- Course 4 -->
+      <div class="glass-card course-card fade-up" onclick="showCourseDetails(this)" data-course="Postman Learning Course" data-description="API testing fundamentals using Postman, including request creation, environment management, and basic automation testing." data-status="Elementary">
+       <div class="course-image" style="background: linear-gradient(135deg, #ff6c37, #ff9a5c);"><span>📬</span> <span class="course-status status-progress">Elementary</span>
+       </div>
+       <div class="p-5">
+        <h3 class="font-display font-semibold mb-2">Postman Learning Course</h3>
+        <p class="text-sm" style="color: var(--text-secondary);">API testing basics</p>
+       </div>
+      </div><!-- Course 5 -->
+      <div class="glass-card course-card fade-up" onclick="showCourseDetails(this)" data-course="Docker Learning Course" data-description="Introduction to containerization with Docker, covering basic commands, Dockerfile creation, and container management fundamentals." data-status="Beginner">
+       <div class="course-image" style="background: linear-gradient(135deg, #2496ed, #0db7ed);"><span>🐳</span> <span class="course-status status-progress">Beginner</span>
+       </div>
+       <div class="p-5">
+        <h3 class="font-display font-semibold mb-2">Docker Learning Course</h3>
+        <p class="text-sm" style="color: var(--text-secondary);">Containerization basics</p>
+       </div>
+      </div><!-- Course 6 -->
+      <div class="glass-card course-card fade-up" onclick="showCourseDetails(this)" data-course="PHP Learning Course" data-description="Beginner PHP programming course covering server-side scripting, basic syntax, database connections, and form handling." data-status="Beginner">
+       <div class="course-image" style="background: linear-gradient(135deg, #777bb4, #8892bf);"><span>🐘</span> <span class="course-status status-progress">Beginner</span>
+       </div>
+       <div class="p-5">
+        <h3 class="font-display font-semibold mb-2">PHP Learning Course</h3>
+        <p class="text-sm" style="color: var(--text-secondary);">Server-side scripting</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Course Modal -->
+   <div id="courseModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden" style="background: rgba(0,0,0,0.8);">
+    <div class="glass-card max-w-lg w-full p-8 relative"><button onclick="closeCourseModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-white/10" aria-label="Close modal">
+      <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" />
+      </svg></button>
+     <h3 id="modalTitle" class="font-display text-2xl font-bold mb-4" style="color: var(--accent-color);"></h3><span id="modalStatus" class="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4"></span>
+     <p id="modalDescription" class="text-lg" style="color: var(--text-secondary);"></p>
+    </div>
+   </div>
